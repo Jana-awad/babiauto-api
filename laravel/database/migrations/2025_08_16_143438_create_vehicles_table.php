@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['customer','admin'])->default('customer');
-            $table->rememberToken();
+            $table->string('make');
+            $table->string('model');
+            $table->year('year');
+            $table->string('type'); // e.g., car, truck, motorcycle
+            $table->decimal('price_per_day', 8, 2);
+            $table->enum('status', ['available', 'booked', 'maintenance'])->default('available');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('vehicles');
     }
 };
