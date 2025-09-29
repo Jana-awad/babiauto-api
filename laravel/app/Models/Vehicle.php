@@ -20,6 +20,7 @@ class Vehicle extends Model
         'type',
         'price_per_day',
         'status',
+        'image_url',
     ];
     /**
      * The attributes that should be cast.
@@ -37,11 +38,9 @@ class Vehicle extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class);
-
     }
     public function features()
     {
-        return $this->belongsToMany(Feature::class,'feature_vehicle');
-    
+        return $this->belongsToMany(Feature::class, 'feature_vehicle');
     }
 }
