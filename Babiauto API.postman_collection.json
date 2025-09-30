@@ -1,0 +1,1585 @@
+{
+	"info": {
+		"_postman_id": "be033d31-8356-4c7e-9560-2802bb6d06d9",
+		"name": "Babiauto API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45478358"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alex\",\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Registers a new user. Requires name, email, password, and password_confirmation fields."
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Alex\",\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Registers a new user. Requires name, email, password, and password_confirmation fields."
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"User registered successfully\",\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"Alex\",\n    \"email\": \"alex@example.com\"\n  }\n}"
+				},
+				{
+					"name": "Validation Error Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Alex\",\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Registers a new user. Requires name, email, password, and password_confirmation fields."
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"name\": [\"The name field is required.\"],\n  \"email\": [\"The email must be a valid email address.\"],\n  \"password\": [\"The password confirmation does not match.\"]\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU4MzU5MDA0LCJleHAiOjE3NTgzNjI2MDQsIm5iZiI6MTc1ODM1OTAwNCwianRpIjoiWTg0QmFWOGQ0dGxRM1pDciIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.DchpYmTkBzJbdKKl884ZxsmRKtb9igK4vOpscK2gHMA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Logs in a user. Returns an authentication token to be used for protected routes."
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU4MzU5MDA0LCJleHAiOjE3NTgzNjI2MDQsIm5iZiI6MTc1ODM1OTAwNCwianRpIjoiWTg0QmFWOGQ0dGxRM1pDciIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.DchpYmTkBzJbdKKl884ZxsmRKtb9igK4vOpscK2gHMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Logs in a user. Returns an authentication token to be used for protected routes."
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"User logged in successfully\",\n  \"token\": \"{{token}}\",\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"Alex\",\n    \"email\": \"alex@example.com\"\n  }\n}"
+				},
+				{
+					"name": "Validation Error Response",
+					"originalRequest": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU4MzU5MDA0LCJleHAiOjE3NTgzNjI2MDQsIm5iZiI6MTc1ODM1OTAwNCwianRpIjoiWTg0QmFWOGQ0dGxRM1pDciIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.DchpYmTkBzJbdKKl884ZxsmRKtb9igK4vOpscK2gHMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Logs in a user. Returns an authentication token to be used for protected routes."
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"email\": [\"The email field is required.\"],\n  \"password\": [\"The password field is required.\"]\n}"
+				},
+				{
+					"name": "Invalid Credentials Response",
+					"originalRequest": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU4MzU5MDA0LCJleHAiOjE3NTgzNjI2MDQsIm5iZiI6MTc1ODM1OTAwNCwianRpIjoiWTg0QmFWOGQ0dGxRM1pDciIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.DchpYmTkBzJbdKKl884ZxsmRKtb9igK4vOpscK2gHMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alex@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Logs in a user. Returns an authentication token to be used for protected routes."
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Invalid credentials\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10tlORCem6Rj5sHsNGnasVrtlwjYijmuvLfMcHnQ09445bb4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"jana1@example.com\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/logout",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "Logs out the currently authenticated user by revoking their token."
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10tlORCem6Rj5sHsNGnasVrtlwjYijmuvLfMcHnQ09445bb4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"jana1@example.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						},
+						"description": "Logs out the currently authenticated user by revoking their token."
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"User logged out successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/profile",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				},
+				"description": "Fetches the profile information of the authenticated user. Requires a valid token."
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						},
+						"description": "Fetches the profile information of the authenticated user. Requires a valid token."
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Alex\",\n  \"email\": \"alex@example.com\"\n}"
+				},
+				{
+					"name": "Unauthorized Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						},
+						"description": "Fetches the profile information of the authenticated user. Requires a valid token."
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"Unauthenticated.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pJhOVeJWoLTfXDJhhiYxptFwDZGYNWpXNHPcuce7b5972339",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"JANA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/profile",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles/3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2023,\r\n    \"type\": \"car\",\r\n    \"price_per_day\": 60.00,\r\n    \"status\": \"available\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Toyota",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 17|W1DbxBIMUyCU3jFLjIjIoikb3PgumZFOUVLpeYZe801b9c18",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"make\": \"Toyota\",\r\n  \"model\": \"Corolla\",\r\n  \"year\": 2023,\r\n  \"type\": \"Sedan\",\r\n  \"price_per_day\": \"50.00\",\r\n  \"status\": \"available\",\r\n  \"image_url\": \"https://www.buyatoyota.com/sharpr/bat/assets/img/vehicle-info/Corolla/2026/hero-image.png\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/vehicles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				},
+				{
+					"name": "Honda",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2023,\r\n    \"type\": \"car\",\r\n    \"price_per_day\": 60.00,\r\n    \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/vehicles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Ford",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2023,\r\n    \"type\": \"car\",\r\n    \"price_per_day\": 60.00,\r\n    \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/vehicles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "BMW",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2023,\r\n    \"type\": \"car\",\r\n    \"price_per_day\": 60.00,\r\n    \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/vehicles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"booked\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/bookings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/bookings/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking by User ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/bookings/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": 1,\r\n  \"vehicle_id\": 1,\r\n  \"start_date\": \"2025-09-01\",\r\n  \"end_date\": \"2025-09-05\",\r\n  \"total_price\": 250.00,\r\n  \"status\": \"pending\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/bookings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Booking",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"confirmed\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/bookings/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"bookings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Booking",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Features",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Features by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Feature",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 3, \"name\": \"Heated Seats\" }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/features",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"features"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Feature",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/features/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"features",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Feature",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/features/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"features",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Insurances",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Insurance by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Insurance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 2, \"booking_id\": 1, \"type\": \"full\", \"coverage\": \"1500.00\", \"status\": \"active\" }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/insurances",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"insurances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Insurance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"booking_id\": 1, \"type\": \"basic\", \"coverage\": \"1500.00\", \"status\": \"active\" }\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/insurances/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"insurances",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Insurance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"booking_id\": 1, \"type\": \"basic\", \"coverage\": \"1500.00\", \"status\": \"active\" }\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/insurances/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"insurances",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"booking_id\": 2,\r\n \"amount\": \"275.00\", \r\n \"payment_method\": \"paypal\",\r\n  \"status\": \"completed\" }\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/payments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Payments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"booking_id\": 2,\r\n \"amount\": \"275.00\", \r\n \"payment_method\": \"paypal\",\r\n  \"status\": \"completed\" }\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/payments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"pending\" }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/payments/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"payments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"pending\" }\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/payments/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"payments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attach Features to Vehicle",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|QRKwYbofgdeo91vw4hFn8ZhZO038SfvLgrG12Ypaf1f5f4f1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"feature_ids\": [2]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles/1/features/attach",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"1",
+						"features",
+						"attach"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicle Features",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Replace Features",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4KqzCDeX9VAC9wNefri7aT281ult49L3CHSSUkEXd8a15bc1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"feature_ids\":[3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vehicles/1/features/sync",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"1",
+						"features",
+						"sync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detach Features",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PushNotification",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.c.c0ASRK0GYYgVHqiY_LTmhhgUTJqckTguFbTzpzxVReCl11VoH-D20zmTs7vb78xfi-tEc0-EVMMLXdQw7L7QQEfl2neYJx61qVrSoWM21GDXHeMkBObXPwkI9rD8pUNGmdXWsw6HpKxqA8g3djlGp9RKxd8ps9Q7e_8kQC4uieG0d1jlBPtVspzQycXFAYO8-TPgVxXw3m4m8kztRnqEz73VrxGb2nkI3UhEweTBa4USpk7ByWb0AkgZBloCWVryVsbBKBWJ-pfPMmhli-iRRBJgW1LlWdhL56r_1fpYQHpvGZYiLIWVhVoNZzjqHKZsuL5jdG8bvMtcQy7TgYgqvynfD_IqYI0Cxb9n1WsNBcII_pVQLJUKZboKDPL385CFZbrgtV-uMqy-FUmoYUVw57r6FcRUd9a_wjvfySBpfjm0FOj0mdYhgfsv5Bk4ZSy1zSgMUl9RFnI3gY_tXar_21XXYV90x36p-vxZwJhZBsUio3VIf6zopiVi9pqh5aqxmi_QuhrUuVQ6MjiOi89W_b_vXmjifOdrxyVuuvFy-8s2jbb3443MOS4I7ZllR7B53lBVI9XsYJfdFsr6ZqakeQ7FyUdS6Wkfk6Y0txrV8c5d6lt79B6OlVtQ613IXk46VFX2uJaixRd21yciefun5vwdZ45RM7W62ppFkvv2j7oy8ORb3-8a1hrblJ9Yb6JYsgnpq_URpoXQXJjnSd78aSJ0btqsv12p1q1tyBu23oVf2RMkUbysdgOeYbu3QdhZbhF5xgWdf0Bi0sQFkf6ahs6OjYSQIR8zUVXhvX9SSZ1cdpgbWerU5rjoz4l2hzwnUIjlm46qBhtn-wUuiY3B0tO6rxQsuuy078Rennuwo4zZaSaoIOvh2dBg7lQkcZ_2l08JWYg312F53Yr5ZcJfS-kiJ5FI06-n3grrttuoOkskRURBIy95uFzcfIjrUcF3cxQgM2Scb64FIMliIhaWc3bQQdUiRmgp3bSUFV09lkrtlJup0p3R__QBO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key=MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2GJb5ztSmPNDy\\nzlcy16+ueClLAcA4gqwN0PrbDAVxK9ZDNaj3WD/3orGf0gemGj5uA0HMge//Rsnv\\nJko3ICiCUFTid9HXhVDdfDKyPtUFbNTzYxni2gWJ2bDRAmr2AhseJQoBpL4yeJhI\\ncYO2gP1610n7W3Xx28cgl1lT6jdJJfpgbY280JBzOOGxFTICJmr0brQWdHEle1rb\\n8teuH8LUdOuxRD1/VEiryI+0agBBiL7cAgVw6vDFlbjyyiHN0UUn3jWMnPpPksgR\\nxYk5vzMsepXow3auExoLr5DXRIw4hChtRAusYWRwBgKrcIoLAye3tr5CNbmTTdTC\\nhxq1lc4BAgMBAAECggEAPeOJnImhWIae9YcPt+X6fa+1SRrlO8+drmxydfRV/SrK\\n/bjFHpvN0dpnyEvX8apFwZo1yM34xahHhZJb8vRpEDFBSF804K0c2MoXaOFWASwG\\nDFqIN8Ol0j48jCzoMYhxswMfrYNSaVD3YNfDzkl03UVCjb1+Dp+FxBvsbkrSU3eS\\n3QWk/6PvJwqxXc38GrWGPlQ3a6yZyVxbcqumLt6uZh3lJVWa3lE2yPvP4xIdgoO9\\nLR020vxHZqRDx8+f6PqlzcJhcJDyQrz6gjtpaN85rvB2PlufKLMdfoESxK3+TR7N\\n/YjQn5+/yclNP+wF4r+6OO/ST7Wr+k9dQIxXFlEmCQKBgQD2g/YdC24FXJTEshY8\\n7R9PBNlWR2yaURUlGfw4GTVALehFQX6doX9O/SxxGYubkf7mgr4AaDaN2WJXSQtw\\n+eZZEoGzFJWWEWLokrEtJis0vVYbKJDieWsjocYxqgJaDS4RFBAkTtb6XHa2aKdc\\n2zRgz6Zg/kEydJrHumvQCfrorwKBgQC9GiIjJRaEnjeFR6P6Yk/8+Y3mEtcjGWFC\\nNFqyT0e6kUK2E4TM5dpu9OVAnV/M4EFfVphEA7oVJiFg1a3Goo8yglxnZycC7ATr\\nhwLBlNLVGkZe82PSSdLOmwbw0lyG9BZQZZsuFvHt1wwCqs7Pdk/EBose3NaUf4yB\\n9vah61gATwKBgQCZLp78pWGUi1cWcuNGsMJHw+eZqYBe1AujpmYIJgHlA6HVh0E6\\nimQlnUTEcu9BmJMgghW3AwsDUhW9z3IAngj5SHq34Q6i1eL0SlM2jwVCHHUpIygE\\n0xY0ag5SRiZ39sCtdB4jsan8oQBTkOyO0tfVYLMuik/RHowfmEPuXoU/mQKBgCBw\\nHS7+K7CwG0IHmf9XYfU5MbgnvzPMJLzgkjZIFzvPsyvciUlEnIWwCKte05InXc9m\\n4VO5d/AszEj6HocWV44IgqVSMoTzy5xDWpuuVcQsb6nWAmeONlUujrA8xZZ4xGMi\\nKs5rLTDpVKwYdMVtvB0aKj8vDrgGcSnSHViFMGFNAoGBAKfXFBA/rUZP7gdNNA5T\\nwouEUnOFBqtC3qebgNDs6Gwp1fiKdDswdiplrxWkxCLX+++nag+FUajZnqOAylpY\\nBYBRrrFWOqj++xhDU2/bkjxW9LJyZUKf43p2OeLGklQrYLD46IuunAQ9BjrlAbN9\\npzk4+0l9DObeKJV5axgLl",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": {\r\n    \"token\": \"f23OdeQAQ8y8MrvldxR1OA:APA91bEwIAwP4k06ksuQ3dFzT9Zhzeo17Hn7H3rhkAFDutY_oG0vuUVM_CIYZtB4tB3YVyCJbgInPB0baoIOdpIECL_r4JDkGOdCav6Nd99CL-5sJTBDCHM\",\r\n    \"notification\": {\r\n      \"title\": \"Test Notification\",\r\n      \"body\": \"This is a test\"\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fcm.googleapis.com/v1/projects/babiautoapp/messages:send",
+					"protocol": "https",
+					"host": [
+						"fcm",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"babiautoapp",
+						"messages:send"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
